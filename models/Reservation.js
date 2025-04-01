@@ -9,12 +9,6 @@
 
 const { Sequelize, DataTypes } = require('sequelize');
 
-// Initialize Sequelize connection
-const sequelize = new Sequelize('MoffatBayLodge', 'your_username', 'your_password', {
-  host: 'localhost',
-  dialect: 'mysql',
-});
-
 // Define Reservation model
 const Reservation = sequelize.define('Reservation', {
   reservation_id: {
