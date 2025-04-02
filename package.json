@@ -1,24 +1,18 @@
 {
-  "name": "moffat-bay",
+  "name": "my-node-project",
   "version": "1.0.0",
-  "description": "capstone project",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Deenalinehan/Moffat-Bay.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Deenalinehan/Moffat-Bay/issues"
-  },
-  "homepage": "https://github.com/Deenalinehan/Moffat-Bay#readme",
+  "description": "",
   "dependencies": {
     "express": "^5.1.0",
+    "mysql2": "^3.14.0",
+    "pg": "^8.14.1",
     "sequelize": "^6.37.7"
   }
 }
