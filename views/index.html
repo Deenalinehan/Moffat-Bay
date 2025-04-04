@@ -13,36 +13,83 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BhuTuka+Expanded+One&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        .floating-text {
+            position: relative;
+            top: 100px; /* Start below its normal position */
+            opacity: 0; /* Make it invisible at the start */
+            transition: top 0.2s ease-out, opacity 0.2s ease-out; /* Smooth transition for movement and fade */
+        }
+
+        .floating-text.visible {
+            top: 0; /* Move it to its final position (float up) */
+            opacity: 1; /* Make it visible */
+        }
+    </style>
 </head>
 
 <body>
 
+<<<<<<< Updated upstream:webpages/index.html
     <div class="navbar">
         <a href="/">Home</a>
         <a href="/about">About</a>
         <!-- <a href="Book">Book Your Visit</a> -->
     </div>    
+=======
+>>>>>>> Stashed changes:views/index.html
 
     <div class="title">
+        <div class="navbar">
+            <a href="../views/index.html">Home</a>
+            <a href="../views/About.html">About</a>
+            <!-- <a href="Book">Book Your Visit</a> -->
+            <!-- <a href="contact-us.html">Contact Us</a> -->
+        </div>
     </div>    
 
     <div class="content">
         <div class="Home-first">
-            <h1>Welcome to the Cozy Cavern Bed & Breakfast</h1>
+            <div class="floating-text">
+            <h1 >Welcome to the Cozy Cavern Bed & Breakfast</h1>
             <p class="centered-text">Your home away from home by the sea.</p>
         </div>
+        </div>
 
+
+<<<<<<< Updated upstream:webpages/index.html
             <div class="Home-IMG1">
                 <img src="../public/images/Whales-and-lighthouse.jpg" alt="Whales and lighthouse" height="475px" width="650px">
             </div>
+=======
+>>>>>>> Stashed changes:views/index.html
             <div class="Home-second">
-            <p>Ahoy and welcome to the Cozy Cavern! Nestled by the seaside, we’ve been offering a peaceful and memorable stay since 1974. Our cozy bed and breakfast started when Hank and Heidi Richmond got married right here — in fact, it’s where they began their journey as innkeepers!</p>
+                <div class="Home-IMG1">
+                    <img src="../public/images/Whales-and-lighthouse.jpg" alt="Whales and lighthouse" height="525px" width="650px">
+                </div>
+            <p>Ahoy and welcome to the Cozy Cavern! Nestled by the seaside, we’ve been offering a peaceful and memorable stay since 1974. Our cozy bed and breakfast started when Hank and Heidi Richmond got married right here — in fact, it’s where they began their journey as innkeepers!
 
-            <p>Whether you're looking for a quiet getaway or an adventure by the sea, our charming retreat offers both comfort and character. Come unwind, enjoy the views, and create lasting memories with us.</p>
+            <br><br>Whether you're looking for a quiet getaway or an adventure by the sea, our charming retreat offers both comfort and character. Come unwind, enjoy the views, and create lasting memories with us.
 
-            <p><strong>Join us for a relaxing stay. We can’t wait to welcome you!</strong></p>
+            <br><br><strong>Join us for a relaxing stay. We can’t wait to welcome you!</strong></p>
         </div>
     </div>
+
+    <script>
+        window.addEventListener("scroll", function () {
+            const floatingText = document.querySelector('.floating-text');
+            const rect = floatingText.getBoundingClientRect();
+            
+            // If the top of the element is within the viewport
+            if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                floatingText.classList.add('visible');
+            } else {
+                floatingText.classList.remove('visible');
+            }
+        });
+    </script>
+
 
 </body>
 

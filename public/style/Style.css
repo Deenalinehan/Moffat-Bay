@@ -15,201 +15,184 @@ html {
 }
 
 .title {
-    height: 300px;
-    width: auto;
-    background-image: url(/csd/Moffat-Bay/images/Lighthouse1.png);
-    align-content: center;
+    height: 400px;
+    width: 100%; 
+    background-image: url(../images/pastel.PNG);
+    background-size: cover;
+    background-position: center; 
     color: black;
-    padding-top: 30px; /* Reduced the padding to move the title up */
-    padding-left: 20px; /* Added left padding to move the title slightly to the left */
-    text-align: center; /* Align the title text to the center */
-}
-
-.navbar {
-    overflow: hidden;
-    background-color: #123456;
-    font-family: "BhuTuka Expanded One", serif;
-    font-size: larger;
-    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: end;
     text-align: center;
 }
 
+.navbar {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; 
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    font-family: "BhuTuka Expanded One", serif;
+    font-size: larger;
+    font-weight: bold;
+    z-index: 10;
+    padding: 10px 10px;
+}
+
 .navbar a {
-    float: left;
-    display: block;
-    padding: 14px 20px;
+    padding: 15px 20px;
     text-decoration: none;
-    color: white;
+    color: #000000;
+    display: inline-block;
+    text-align: center;
 }
 
 .navbar a:hover {
-    background-color: #154360;
-    color: #F2F4F4;
+    background-color: transparent;
+    color: #f7b3bd;
 }
 
 h1 {
     text-align: center;
     font-family: "BhuTuka Expanded One", serif;
-    font-size: 3em; /* Adjust font size for prominence */
+    font-size: 3em;
 }
 
-h2 {
-    font-family: "BhuTuka Expanded One", serif;
-    color: black;
-    font-style: bold;
-}
 
-a {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-    background-color: #154360;
-    color: #F2F4F4;
-}
-
-.AboutUs-IMG1 {
-    margin-left: 20px;
-    max-width: 100%; /* Ensure it scales well within its parent container */
-    display: inline-block;
-}
-
-.AboutUs-IMG2 {
-    padding-right: 5%;
-    margin-left: 20px;
-}
-
-.AboutUs-first {
-    padding-left: 15px;
-    padding-right: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start; /* Align items at the top */
-    float: center;
-}
-.AboutUs-second{
-    padding-left: 15px;
-    padding-right: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start; /* Align items at the top */
-    float: left;
-}
-.AboutUs-third {
-    padding-left: 15px;
-    padding-right: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start; /* Align items at the top */
-    float: right;
-}
-.content {
-    padding: 20px;
-    margin: 20px;
-    background-color: #f9f9f9; /* Light background for content */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    display: flex; /* Apply Flexbox */
-    flex-wrap: wrap; /* Ensure elements wrap properly if needed */
-    justify-content: space-between; /* Add space between items */
-}
-
-.Home-first {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+.Home-second {
+    display: flex; /* Use flexbox to align items side by side */
+    flex-wrap: wrap; 
+    justify-content: flex;
+    margin-bottom: 50px;
 }
 
 .Home-IMG1 {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    flex: 1;
-    margin-right: 20px;
-    margin-left: 20px;
+    display: block; 
+    margin-bottom: 5px;
+    padding-right:100px;
+    box-sizing: border-box;
 }
 
-.Home-IMG1 img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-p {
+.Home-second p {
     font-family: "BhuTuka Expanded One", serif;
     font-size: 1.1em;
     line-height: 1.6em;
-    max-width: 750px;
+    max-width: 975px;
     margin-bottom: 20px;
+    text-align: left; 
+    margin-left: 5px; 
+    width: 45%; 
+    font-weight: bold;
+}
+
+.AboutUs-IMG1, .AboutUs-IMG2 {
+    display: flex; 
+    max-width: 100%; 
+    height: auto; 
+    margin-bottom: 5px;
+    padding-right: 100px;
+}
+
+.AboutUs-first {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 0;
+}
+
+.AboutUs-second {
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    max-width: max-content;
+}
+
+.AboutUs-third {
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    max-width: max-content;
+}
+
+.content {
+    padding: 5px;
+    margin: 5px;
+    background-color: #f9f9f9;
+    border-radius: 3px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2px;
+}
+
+.AboutUs-second p, .AboutUs-third p {
+    font-family: "BhuTuka Expanded One", serif;
+    font-size: 1.1em;
+    line-height: 1.6em;
+    max-width: 975px;
+    margin-bottom: 20px;
+    text-align: left; 
+    margin-left: 5px; 
+    width: 45%; 
     font-weight: bold;
 }
 
 .centered-text {
-    padding-left: 500px;
-    padding-right: 500px;
     text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    font-family: "BhuTuka Expanded One", serif;
+    font-size: 1.1em;
+    line-height: 1.6em;
+    font-weight: bold;
+    margin-top: 5px;
 }
 
 strong {
     font-weight: bold;
-    color: #154360;
+    color: #658CF7;
 }
 
-.Home-second {
-    padding-left: 15px; /* Left padding for better spacing */
-    background-color: #f4f4f4; /* Light gray background color */
-    border-radius: 8px; /* Rounded corners */
-    flex: 1; /* Ensure it takes up available space */
-    margin-bottom: 20px; /* Add space at the bottom */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+.floating-text {
+    position: relative;
+    top: -100px;
+    opacity: 0; 
+    transition: top 0.1s ease-out, opacity 0.1s ease-out; 
+}
+
+.floating-text.visible {
+    top: 0;
+    opacity: 1; 
 }
 
 @media (max-width: 768px) {
-    .Home-first {
-        flex-direction: column;
+    .content {
+        flex-direction: column; 
         align-items: center;
     }
 
-    .Home-IMG1 {
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
-
-    .navbar a {
-        width: 100%;
-        padding: 12px;
-    }
-
-    .content {
-        flex-direction: column; /* Stack the items vertically on small screens */
-    }
-
-    .Home-second {
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-
-    .AboutUs-IMG1, .AboutUs-IMG2 {
-        float: none;
-        margin: 0 auto;
-        display: block;
-        max-width: 100%;
-    }
-
     .AboutUs-first {
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 15px;
+        padding-right: 5px;
     }
+
     .AboutUs-second {
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 15px;
+        padding-right: 15px;
     }
+
     .AboutUs-third {
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
