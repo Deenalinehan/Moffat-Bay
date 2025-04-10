@@ -22,6 +22,7 @@ async function seedDatabase() {
         email: 'john.doe@google.com',
         password: 'hashed_123',
         phone_number: '+1-555-123-4567',
+        user_name: 'Johndoedeer',
       },
       {
         first_name: 'Jane',
@@ -29,6 +30,8 @@ async function seedDatabase() {
         email: 'jane.smith@yahoo.com',
         password: 'hashed_456',
         phone_number: '+1-555-987-6543',
+        user_name: 'Janethesmith',
+
       },
       {
         first_name: 'Alice',
@@ -36,6 +39,8 @@ async function seedDatabase() {
         email: 'alice.johnson@hotmail.com',
         password: 'hashed_789',
         phone_number: '+1-555-222-3333',
+        user_name: 'Aliceson',
+
       },
     ]);
 
