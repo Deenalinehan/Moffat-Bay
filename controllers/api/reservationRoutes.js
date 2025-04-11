@@ -1,3 +1,5 @@
+const { Reservation } = require('../../models');
+
 const router = require('express').Router();
 // const { User, Reservation } = require('../../models');
 
@@ -36,23 +38,28 @@ router.get('/getOneRes/:resId', async (req, res) => {
 
   try {
 
-    // return a stub response so the frontend developers can verify they're successfully communicating with the backend
-    const stubResponse = {
-      message: 'received GET request for getOneRes endpoint. This endpoint is a stub. It does not yet interact with database.',
-      reservationId: req.params.resId
+    const reservationData = await Reservation.findOne({
+      where: {
+        id: req.params.resId,
+      }
+    });
+
+    if (!reservationData) {
+      res.status(404).json({ message: 'no reservation found with this id!' });
+      return;
     }
 
-    res.status(200).json(stubResponse);
+    res.status(200).json(reservationData);
   } catch (err) {
     console.log(err);
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 
 // get all reservations for userId
 // will look like http://localhost:3001/api/reservations/getAllResForUser/75
 router.get('/getAllResForUser/:userId', async (req, res) => {
-  
+
   try {
 
     // return a stub response so the frontend developers can verify they're successfully communicating with the backend
