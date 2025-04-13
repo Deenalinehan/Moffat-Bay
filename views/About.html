@@ -3,50 +3,48 @@
 
 <head>
     <title>About Us</title>
-    <meta name="authors" content="Kristina Vasquez" />
+    <meta name="authors" content="Roald Medendorp","Austen Erickson","Deena Linehan","Giabella Apo","Kristina Vasquez","Thunder Harding","Violet Gonzalez"/>
     <meta name="description" content="Group 1 Capstone" />
     <meta name="keywords" content="CSS, HTML, Group 1, Capstone" />
     <meta name="robots" content="nofollow" />
+    <link rel="stylesheet" href="Style.css">
 
-    <link rel="stylesheet" href="/style/Style.css">
+    <link rel="stylesheet" href="./../public/style/Style.css">
 
     <!-- Fonts for webpage -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=BhuTuka+Expanded+One&family=Gowun+Batang:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=BhuTuka+Expanded+One&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         .floating-text {
             position: relative;
-            top: 100px;
-            /* Start below its normal position */
-            opacity: 0;
-            /* Make it invisible at the start */
-            transition: top 0.2s ease-out, opacity 0.2s ease-out;
-            /* Smooth transition for movement and fade */
+            top: 100px; /* Start below its normal position */
+            opacity: 0; /* Make it invisible at the start */
+            transition: top 0.2s ease-out, opacity 0.2s ease-out; /* Smooth transition for movement and fade */
         }
 
         .floating-text.visible {
-            top: 0;
-            /* Move it to its final position (float up) */
-            opacity: 1;
-            /* Make it visible */
+            top: 0; /* Move it to its final position (float up) */
+            opacity: 1; /* Make it visible */
         }
     </style>
 </head>
 
 <body>
 
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="About.html">About</a>
+        <a href="Book.html">Book Your Visit</a>
     <div class="title">
         <div class="navbar">
-            <a href="/">Home</a>
-            <a href="/about">About Us</a>
-            <a href="/registration">Register</a>
-            <a href="/login">Log In</a>
+            <a href="../views/index.html">Home</a>
+            <a href="../views/About.html">About</a>
+            <!-- <a href="Book">Book Your Visit</a> -->
             <!-- <a href="contact-us.html">Contact Us</a> -->
         </div>
+
     </div>
 
     <div class="AboutUs-first">
@@ -57,40 +55,22 @@
     <div class="content">
         <div class="AboutUs-second">
             <div class="AboutUs-IMG1">
-                <img src="/images/therichmonds.jpg" alt="The Richmonds" height="275px" width="450px">
+                <img src="/csd/Moffat-Bay/images/therichmonds.jpg" alt="The Richmonds" height="275px" width="450px">
             </div>
-            <p>Established in 1974, the Cozy Cavern Bed & Breakfast has been a haven for travelers seeking a peaceful
-                retreat by the sea. What started as a dream between two passionate individuals — Hank and Heidi Richmond
-                — has blossomed into a charming sanctuary nestled in the heart of the San Juan Islands.
+            <p>Established in 1974, the Cozy Cavern Bed & Breakfast has been a haven for travelers seeking a peaceful retreat by the sea. What started as a dream between two passionate individuals — Hank and Heidi Richmond — has blossomed into a charming sanctuary nestled in the heart of the San Juan Islands.
 
-                <br><br>From the moment you step through our door, you'll feel the warmth and welcoming energy that Hank
-                and Heidi have poured into this place over the years. Whether you're here for a quiet getaway or an
-                adventurous escape, their dedication to creating a cozy, relaxing atmosphere is evident in every corner
-                of the bed and breakfast. They've thought of every detail, ensuring that your stay is filled with
-                comfort, tranquility, and moments of joy.
-            </p>
+                <br><br>From the moment you step through our door, you'll feel the warmth and welcoming energy that Hank and Heidi have poured into this place over the years. Whether you're here for a quiet getaway or an adventurous escape, their dedication to creating a cozy, relaxing atmosphere is evident in every corner of the bed and breakfast. They've thought of every detail, ensuring that your stay is filled with comfort, tranquility, and moments of joy.</p>
         </div>
 
         <div class="AboutUs-third">
             <div class="AboutUs-IMG2">
-                <img src="/images/pickle.jpg" alt="Meet Pickle" height="475px" width="450px">
+                <img src="/csd/Moffat-Bay/images/pickle.jpg" alt="Meet Pickle" height="475px" width="450px">
             </div>
-            <p>Our beloved border collie, Pickle, is the unofficial mascot of the Cozy Cavern. With his playful spirit
-                and friendly demeanor, Pickle has greeted countless guests over the years. Whether he's lounging in the
-                garden or running along the beach, Pickle brings a special charm to the Cozy Cavern experience. Guests
-                often share fond stories of their encounters with Pickle — and some have even become lifelong friends
-                with him. We encourage you to say hello to him during your stay; his wagging tail and warm personality
-                will surely make your visit even more memorable.
+            <p>Our beloved border collie, Pickle, is the unofficial mascot of the Cozy Cavern. With his playful spirit and friendly demeanor, Pickle has greeted countless guests over the years. Whether he's lounging in the garden or running along the beach, Pickle brings a special charm to the Cozy Cavern experience. Guests often share fond stories of their encounters with Pickle — and some have even become lifelong friends with him. We encourage you to say hello to him during your stay; his wagging tail and warm personality will surely make your visit even more memorable.
 
-                <br><br>At Cozy Cavern, we believe that every stay should be an experience worth remembering. From the
-                stunning views of the coastline to the delicious home-cooked breakfasts, every moment is crafted with
-                care and love. We want you to feel at home, whether you're unwinding with a book in our cozy living
-                room, watching the sunset on the deck, or enjoying the tranquility of the island.
+                <br><br>At Cozy Cavern, we believe that every stay should be an experience worth remembering. From the stunning views of the coastline to the delicious home-cooked breakfasts, every moment is crafted with care and love. We want you to feel at home, whether you're unwinding with a book in our cozy living room, watching the sunset on the deck, or enjoying the tranquility of the island.
 
-                <br><br>Join us at Cozy Cavern and let us share the beauty of the San Juan Islands with you. Hank,
-                Heidi, and Pickle look forward to welcoming you and ensuring your stay is nothing short of magical. We
-                can't wait to have you as part of our family!
-            </p>
+                <br><br>Join us at Cozy Cavern and let us share the beauty of the San Juan Islands with you. Hank, Heidi, and Pickle look forward to welcoming you and ensuring your stay is nothing short of magical. We can't wait to have you as part of our family!</p>
 
         </div>
     </div>
