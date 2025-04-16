@@ -33,6 +33,16 @@ router.get('/registration', (req, res) => {
     res.sendFile(path.join(__dirname, '../views/registration.html'));
 });
 
+// Things to Do Page
+router.get('/todo', (req, res) => {
+    res.sendFile(path.join(__dirname, '../views/todo.html'));
+  });
+  
+  // Amenities Page
+  router.get('/amenities', (req, res) => {
+    res.sendFile(path.join(__dirname, '../views/Amenities.html'));
+  });
+  
 // // Login Page
 // will look like http://localhost:3001/login
 router.get('/login', (req, res) => {
