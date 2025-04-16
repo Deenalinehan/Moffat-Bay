@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.umd.min.js"></script>
+</head>
+<body>
+    <h1>This is the reservation page</h1>
+
+    <div class="booking-date">
+        <div class="date-picker">
+            <div class="date-field">
+                <label for="check-in-out">Check-in → Check-out</label>
+                <input id="dateselect" type="text" placeholder="Select your stay dates" readonly>
+            </div>
+        </div>
+
+        <button type="button" class="search-button">Search</button>
+    </div>
+    <div>
+        <h3>How many guests?</h3>
+        <input type="number" id="guestCount"><br><br>
+        <label for="roomSelection">Select a room:</label>
+    
+        <select id="roomSelection">
+            <option value="0">--select--</option>
+            <option value="1">double, full</option>
+            <option value="2">single, full</option>
+            <option value="3">queen, double</option>
+            <option value="4">king, double</option>
+          </select>
+        <button id="submitButton">Submit</button>
+    </div>
+</body>
+<script src="/js/reservation2.js"></script>
+<script src="/js/index.js"></script>
+</html>
+
+
+
+<!-- 
+const { userId, roomId, guestCount, checkInDate, checkOutDate } = req.body; -->

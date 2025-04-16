@@ -38,7 +38,7 @@ router.get('/login', (req, res) => {
 // // Reservation Page
 // will look like http://localhost:3001/reservation
 router.get('/reservation', withAuth, (req, res) => {
-     res.sendFile(path.join(__dirname, '../views/reservation.html'));
+     res.sendFile(path.join(__dirname, '../views/reservation2.html'));
 });
 
 // // Reservation Lookup Page
