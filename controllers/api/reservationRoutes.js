@@ -78,7 +78,7 @@ router.get('/getOneRes/:resId', withAuth, async (req, res) => {
     // if the reservation record is not found, send back a "not found" message
     if (!resData) {
       res
-        .status(400)
+        .status(200)
         .json({ message: `reservation with id: ${req.params.resId} is not found` });
       return;
     }
@@ -109,6 +109,13 @@ router.get('/getAllResForUser/:userId', withAuth, async (req, res) => {
         }
       ]
     });
+
+    if (!userResData) {
+      res
+        .status(200)
+        .json({ message: `no reservations found for user with id: ${req.params.userId}` });
+      return;
+    }
 
     res.status(200).json({ user_reservation_data: userResData });
   } catch (err) {

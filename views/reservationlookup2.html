@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>This is the reservation lookup page!</h1>
+    <hr>
+    <h2>Have your reservation id? Reveiw your details!</h2>
+    <input id="userResId" type="number">
+    <button id="oneResButton">Submit</button>
+    <div id="resSearchResult"></div>
+    <hr>
+    <h2>View the entirety of your reservation data?</h2>
+    <button id="allResButton">Click here for all res data</button>
+    <div id="allResSearchResult"></div>
+</body>
+
+<script>
+
+    document.getElementById("oneResButton").addEventListener('click', async () => {
+        let resSearchResult = document.getElementById("resSearchResult")
+        while (resSearchResult.firstChild) {
+            resSearchResult.removeChild(resSearchResult.firstChild);
+        }
+        let userResId = document.getElementById("userResId").value
+        console.log(userResId)
+        try {
+            const response = await fetch(`/api/reservations/getOneRes/${userResId}`, {
+                method: 'GET'
+            })
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const resData = await response.json();
+            console.log(resData)
+            let pTag = document.createElement('p')
+
+            // Add the JSON data as a string
+            pTag.textContent = JSON.stringify(resData, null, 2); // pretty print with 2-space indentation
+            resSearchResult.appendChild(pTag)
+
+            if (resData.reservation) {
+                console.log("reservation found!")
+
+            } else {
+                console.log(resData.message)
+            }
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+
+    })
+
+
+    document.getElementById("allResButton").addEventListener('click', async () => {
+
+
+        try {
+            let allResSearchResult = document.getElementById("allResSearchResult")
+            while (allResSearchResult.firstChild) {
+                allResSearchResult.removeChild(allResSearchResult.firstChild);
+            }
+
+
+            let response = await fetch("/api/session/getSession", {
+                method: 'GET'
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const sessionData = await response.json();
+            console.log(sessionData)
+
+            const response2 = await fetch(`/api/reservations/getAllResForUser/${sessionData.userId}`, {
+                method: 'GET'
+            })
+
+            if (!response2.ok) {
+                throw new Error(`HTTP error! status: ${response2.status}`);
+            }
+
+            const resData = await response2.json();
+            console.log(resData)
+
+            console.log(resData)
+            let pTag = document.createElement('p')
+
+            // Add the JSON data as a string
+            pTag.textContent = JSON.stringify(resData, null, 2); // pretty print with 2-space indentation
+            allResSearchResult.appendChild(pTag)
+
+            if (resData.reservation) {
+                console.log("reservations found!")
+
+            } else {
+                console.log(resData.message)
+            }
+
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    })
+
+</script>
+
+
+
+</html>
