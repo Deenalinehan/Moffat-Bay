@@ -48,6 +48,12 @@ loginBtn.addEventListener("click", async (event) => {
             resultMessageDiv.classList.add("successMessage")
             resultMessageDiv.innerHTML = "you are now logged in!"
             console.log(responseData)
+
+            // after user sees "you are now logged in" message, redirect them to the home page
+            // the page reload will reveal the reservation option in the nav bar available to users who are logged in
+            setTimeout(function() {
+                window.location.href = '/';
+              }, 1250); 
         }
 
     } catch (error) {

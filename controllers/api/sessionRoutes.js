@@ -4,7 +4,8 @@ const router = require('express').Router();
 router.get('/getSession', (req, res) => {
     res.json({
         logged_in: req.session.logged_in || false,
-        userId: req.session.userId || null
+        userId: req.session.userId || null,
+        firstName: req.session.firstName
     });
 });
 

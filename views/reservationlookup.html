@@ -71,12 +71,19 @@
 </head>
 
 <body>
+    <div class="title">
+        <div id="loggedInIconDiv">
+            <h2>Welcome, <span id="userFirstName"></span></h>
+        </div>
+
+    </div>
     <div class="navbar">
         <a href="/">Home</a>
         <a href="/about">About Us</a>
         <a href="/amenities">Amenities</a>
         <div id="dropdownWrapper" style="position: relative; display: inline-block;">
-            <a href="#" onclick="toggleDropdown(event)" id="reservation-link">Reservations</a>
+            <a href="#" onclick="toggleDropdown(event)" id="reservation-link"
+                style="text-decoration: underline;">Reservations</a>
             <div id="dropdownMenu" class="dropdown hidden">
                 <a href="/reservation">Make Reservation</a>
                 <a href="/reservationlookup">Lookup Reservation</a>
@@ -86,46 +93,50 @@
         <a href="/logout" id="logout-link">Log Out</a>
     </div>
     <script src="/js/nav.js"></script>
+    <div style="margin-bottom: 50px;">
+        <h1 style="text-decoration: underline; text-decoration-thickness: 3px;"">Lookup A Reservation</h1>
+      </div>
 
-    <div class="summary-container">
-        <!-- Previous summary content -->
+    <div class=" summary-container">
+            <!-- Previous summary content -->
 
-        <!-- New Features Section -->
-        <div class="feature-section">
-            <h2>Additional Information</h2>
+            <!-- New Features Section -->
+            <div class="feature-section">
+                <h2>Additional Information</h2>
 
-            <!-- Check-in Instructions -->
-            <div class="collapsible" onclick="toggleCollapsible('checkin')">
-                📅 Check-in Instructions
-            </div>
-            <div id="checkin" class="collapsible-content">
-                <p>Check-in time: 3:00 PM - 7:00 PM</p>
-                <p>Late arrival instructions: Call +1 (555) 123-4567</p>
-                <p>Key pickup: Front desk</p>
-            </div>
+                <!-- Check-in Instructions -->
+                <div class="collapsible" onclick="toggleCollapsible('checkin')">
+                    📅 Check-in Instructions
+                </div>
+                <div id="checkin" class="collapsible-content">
+                    <p>Check-in time: 3:00 PM - 7:00 PM</p>
+                    <p>Late arrival instructions: Call +1 (555) 123-4567</p>
+                    <p>Key pickup: Front desk</p>
+                </div>
 
-            <!-- Cancellation Policy -->
-            <div class="collapsible" onclick="toggleCollapsible('cancellation')">
-                ❗ Cancellation Policy
-            </div>
-            <div id="cancellation" class="collapsible-content">
-                <p>Free cancellation up to 72 hours before check-in</p>
-                <p>50% charge for cancellations within 72 hours</p>
-            </div>
+                <!-- Cancellation Policy -->
+                <div class="collapsible" onclick="toggleCollapsible('cancellation')">
+                    ❗ Cancellation Policy
+                </div>
+                <div id="cancellation" class="collapsible-content">
+                    <p>Free cancellation up to 72 hours before check-in</p>
+                    <p>50% charge for cancellations within 72 hours</p>
+                </div>
 
-            <!-- Action Buttons -->
-            <div class="action-buttons">
-                <button class="secondary-button" onclick="downloadCalendar()">
-                    📅 Add to Calendar
-                </button>
-                <button class="secondary-button" onclick="resendConfirmation()">
-                    ✉️ Resend Confirmation
-                </button>
-                <button class="secondary-button" id="paymentButton" onclick="completePayment()" style="display: none;">
-                    💳 Complete Payment
-                </button>
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="secondary-button" onclick="downloadCalendar()">
+                        📅 Add to Calendar
+                    </button>
+                    <button class="secondary-button" onclick="resendConfirmation()">
+                        ✉️ Resend Confirmation
+                    </button>
+                    <button class="secondary-button" id="paymentButton" onclick="completePayment()"
+                        style="display: none;">
+                        💳 Complete Payment
+                    </button>
+                </div>
             </div>
-        </div>
     </div>
 
     <script>

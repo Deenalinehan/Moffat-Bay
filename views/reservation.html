@@ -16,14 +16,23 @@
     rel="stylesheet">
 </head>
 
-<!-- Nav Bar -->
-<div class="title">
+<body>
+
+  <!-- Nav Bar -->
+  <div class="title">
+    <div id="loggedInIconDiv">
+      <h2>Welcome, <span id="userFirstName"></span></h>
+    </div>
+
+
+  </div>
   <div class="navbar">
     <a href="/">Home</a>
     <a href="/about">About Us</a>
     <a href="/amenities">Amenities</a>
     <div id="dropdownWrapper" style="position: relative; display: inline-block;">
-      <a href="#" onclick="toggleDropdown(event)" id="reservation-link">Reservations</a>
+      <a href="#" onclick="toggleDropdown(event)" id="reservation-link"
+        style="text-decoration: underline;">Reservations</a>
       <div id="dropdownMenu" class="dropdown hidden">
         <a href="/reservation">Make Reservation</a>
         <a href="/reservationlookup">Lookup Reservation</a>
@@ -33,14 +42,8 @@
     <a href="/logout" id="logout-link">Log Out</a>
   </div>
   <script src="/js/nav.js"></script>
-
-  <body>
-
-
-    <!-- Booking date selection -->
-</div>
-<div style="margin-bottom: 50px;">
-  <h1 style="text-decoration: underline; text-decoration-thickness: 3px;"">Make A Reservation</h1>
+  <div style="margin-bottom: 50px;">
+    <h1 style="text-decoration: underline; text-decoration-thickness: 3px;"">Make A Reservation</h1>
 </div>
 
 

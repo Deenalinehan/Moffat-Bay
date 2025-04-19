@@ -22,10 +22,16 @@
 </head>
 
 <body>
+    <div class="title">
+        <div id="loggedInIconDiv">
+            <h2>Welcome, <span id="userFirstName"></span></h>
+        </div>
+
+    </div>
     <div class="navbar">
         <a href="/">Home</a>
         <a href="/about">About Us</a>
-        <a href="/amenities">Amenities</a>
+        <a href="/amenities" style="text-decoration: underline;">Amenities</a>
         <div id="dropdownWrapper" style="position: relative; display: inline-block;">
             <a href="#" onclick="toggleDropdown(event)" id="reservation-link">Reservations</a>
             <div id="dropdownMenu" class="dropdown hidden">

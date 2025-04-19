@@ -2,6 +2,10 @@ html {
     background-color: #F0F0F0;
 }
 
+body {
+    margin: 0px;
+}
+
 .bhutuka-expanded-one-regular {
     font-family: "BhuTuka Expanded One", serif;
     font-weight: 400;
@@ -19,12 +23,14 @@ html {
     height: 250px;
     width: 300%; 
     background-image: url(../images/pastel.PNG);
-    background-size: 90% 90%;
+    /* background-size: 90% 90%; */
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: center; 
     color: black;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: flex-end;
     text-align: center;
     opacity: 95%;
@@ -55,6 +61,22 @@ html {
     color: #000000;
     display: inline-block;
     text-align: center;
+}
+
+#loggedInIconDiv {
+    padding: 4px;
+    margin-right: 10px;
+    /* border: solid 3px; */
+    /* border-color: #658CF7; */
+    /* border-color: black; */
+}
+
+#loggedInIconDiv h2 {
+    color: rgb(160, 73, 160);
+}
+
+#userFirstName {
+    color:#658CF7
 }
 
 

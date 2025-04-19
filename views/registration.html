@@ -19,65 +19,72 @@
 
 <body>
     <div class="title">
-        <div class="navbar">
-            <a href="/">Home</a>
-            <a href="/about">About Us</a>
-            <a href="/amenities">Amenities</a>
-            <div id="dropdownWrapper" style="position: relative; display: inline-block;">
-                <a href="#" onclick="toggleDropdown(event)" id="reservation-link">Reservations</a>
-                <div id="dropdownMenu" class="dropdown hidden">
-                    <a href="/reservation">Make Reservation</a>
-                    <a href="/reservationlookup">Lookup Reservation</a>
-                </div>
-            </div>
-            <a href="/login" id="login-link">Log In</a>
-            <a href="/logout" id="logout-link">Log Out</a>
+        <div id="loggedInIconDiv">
+            <h2>Welcome, <span id="userFirstName"></span></h>
         </div>
-        <script src="/js/nav.js"></script>
+
     </div>
 
-    <!-- Centered Registration Form -->
-    <div class="registration-container">
-        <form id="registrationForm">
-            <h2>Create Your Moffat Bay Lodge Account</h2>
-            <div id="apiError" class="error-message"></div>
-
-            <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" id="firstName" required>
-                <span id="firstNameError" class="error-message"></span>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/about">About Us</a>
+        <a href="/amenities">Amenities</a>
+        <div id="dropdownWrapper" style="position: relative; display: inline-block;">
+            <a href="#" onclick="toggleDropdown(event)" id="reservation-link">Reservations</a>
+            <div id="dropdownMenu" class="dropdown hidden">
+                <a href="/reservation">Make Reservation</a>
+                <a href="/reservationlookup">Lookup Reservation</a>
             </div>
+        </div>
+        <a href="/login" id="login-link" style="text-decoration: underline;">Log In</a>
+        <a href="/logout" id="logout-link">Log Out</a>
+    </div>
+    <script src="/js/nav.js"></script>
+    <div id="bannerDiv">
 
-            <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" required>
-                <span id="lastNameError" class="error-message"></span>
-            </div>
+        <!-- Centered Registration Form -->
+        <div class="registration-container">
+            <form id="registrationForm">
+                <h2>Create Your Moffat Bay Lodge Account</h2>
+                <div id="apiError" class="error-message"></div>
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" required>
-                <span id="emailError" class="error-message"></span>
-            </div>
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" required>
+                    <span id="firstNameError" class="error-message"></span>
+                </div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" required>
-                <span id="passwordError" class="error-message"></span>
-            </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" required>
+                    <span id="lastNameError" class="error-message"></span>
+                </div>
 
-            <div class="form-group">
-                <label for="phoneNumber">Phone Number</label>
-                <input type="tel" id="phoneNumber" required>
-                <span id="phoneNumberError" class="error-message"></span>
-            </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                    <span id="emailError" class="error-message"></span>
+                </div>
 
-            <button type="button" id="submitButton">Create Account</button>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                    <span id="passwordError" class="error-message"></span>
+                </div>
 
-            <p class="login-link">
-                Already have an account? <a href="/login">Log in here</a>
-            </p>
-        </form>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" id="phoneNumber" required>
+                    <span id="phoneNumberError" class="error-message"></span>
+                </div>
+
+                <button type="button" id="submitButton">Create Account</button>
+
+                <p class="login-link">
+                    Already have an account? <a href="/login">Log in here</a>
+                </p>
+            </form>
+        </div>
     </div>
 </body>
 <script src="/js/registration.js"></script>
