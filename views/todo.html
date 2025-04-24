@@ -1,40 +1,158 @@
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="authors" content="Roald Medendorp" ,"Austen Erickson","Deena Linehan","Giabella Apo","Kristina
-    Vasquez","Thunder Harding","Violet Gonzalez" />
-  <meta name="description" content="Group 1 Capstone">
-  <meta name="keywords" content="CSS, HTML, Group 1, Capstone">
-  <meta name="robots" content="nofollow">
-
-  <title>Amenities</title>
-
-  <link rel="stylesheet" href="./../public/style/Style.css">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=BhuTuka+Expanded+One&family=Gowun+Batang:wght@400;700&display=swap"
-    rel="stylesheet">
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="authors"
-    content="Roald Medendorp, Austen Erickson, Deena Linehan, Giabella Apo, Kristina Vasquez, Thunder Harding, Violet Gonzalez" />
   <meta name="description" content="Group 1 Capstone" />
-  <meta name="keywords" content="CSS, HTML, Group 1, Capstone" />
-  <meta name="robots" content="nofollow" />
-
-  <title>Things To Do</title>
-
-  <link rel="stylesheet" href="./../public/style/Style.css" />
+  <title>Amenities & Things To Do</title>
+  <link rel="stylesheet" href="/style/Style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=BhuTuka+Expanded+One&family=Gowun+Batang:wght@400;700&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=BhuTuka+Expanded+One&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    #amenities, #things-to-do {
+      padding: 2rem 0;
+    }
+
+    #amenities {
+      background-color: #f9f9f9;
+    }
+
+    #things-to-do {
+      background-color: #ffffff;
+    }
+
+    .section-intro {
+      max-width: 700px;
+      margin: 1rem auto 2rem;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      margin: 1rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      text-align: left;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .card-grid .card {
+      flex: 1 1 300px;
+      max-width: 32%;
+      box-sizing: border-box;
+    }
+
+    .ToDo-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .ToDo-details .card {
+      flex: 1 1 300px;
+      max-width: 32%;
+      box-sizing: border-box;
+    }
+
+    .external-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-weight: bold;
+      color: #0077cc;
+      text-decoration: underline;
+      transition: color 0.2s ease;
+    }
+
+    .external-link:hover {
+      color: #004d99;
+    }
+
+    .back-to-top {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .back-to-top a {
+      font-weight: bold;
+      color: #0077cc;
+      text-decoration: underline;
+      transition: color 0.2s ease;
+    }
+
+    .back-to-top a:hover {
+      color: #004d99;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 800px;
+      border-radius: 10px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+    }
+
+    .modal-body {
+      padding: 10px;
+    }
+  </style>
 </head>
 
 <body>
@@ -42,162 +160,172 @@
     <div class="navbar">
       <a href="/">Home</a>
       <a href="/about">About Us</a>
-      <a href="/amenities">Amenities</a>
-      <div id="dropdownWrapper" style="position: relative; display: inline-block;">
-        <a href="#" onclick="toggleDropdown(event)" id="reservation-link">Reservations</a>
-        <div id="dropdownMenu" class="dropdown hidden">
-          <a href="/reservation">Make Reservation</a>
-          <a href="/reservationlookup">Lookup Reservation</a>
-        </div>
-      </div>
+      <a href="/registration">Register</a>
       <a href="/login" id="login-link">Log In</a>
       <a href="/logout" id="logout-link">Log Out</a>
+      <a href="/reservation">Reservations</a>
+      <a href="/reservationlookup">Reservation Summary</a>
+      <a href="#things-to-do">Things to Do</a>
+      <a href="#amenities">Amenities</a>
     </div>
   </div>
 
   <main class="container">
-    <section class="Amenities-first">
+
+    <!-- AMENITIES SECTION -->
+    <section class="Amenities-first" id="amenities">
       <h1 class="floating-text">Amenities</h1>
+      <p class="section-intro">Whether you're here to unwind or explore, our amenities are designed to make your stay effortless and enjoyable.</p>
     </section>
 
     <section class="content">
-      <div class="Amenities-details">
-        <h2>Check-In & Check-Out</h2>
-        <p>Check-In: Our check-in time begins at 3:00 PM. Feel free to arrive anytime after that to settle into your
-          cozy room and start enjoying your stay!</p>
-        <p>Check-Out: Check-out is at 11:00 AM. We hope you had a restful stay, and we look forward to welcoming you
-          back soon!</p>
-
-        <h2>Complimentary Breakfast</h2>
-        <p>Each morning, enjoy a complimentary breakfast served from 7:00 AM to 10:00 AM in our cozy dining area. Savor
-          fresh local pastries, seasonal fruit, and a selection of beverages to start your day the right way!</p>
-
-        <h2>Wi-Fi</h2>
-        <p>Stay connected during your stay with complimentary high-speed Wi-Fi available throughout the hotel.</p>
-
-        <h2>On-Site Parking</h2>
-        <p>Free on-site parking is available for all guests during your stay.</p>
-
-        <h2>Guest Lounge</h2>
-        <p>Relax and unwind in our comfortable guest lounge, where you can enjoy reading, games, or simply relax with a
-          warm beverage.</p>
-
-        <h2>Bicycles</h2>
-        <p>We offer complimentary bicycle rentals to explore the beautiful surroundings of the San Juan Islands.</p>
-
-        <h2>Contact Information</h2>
-        <p>Should you need assistance or have any questions during your stay, our team is happy to help. Reach us
-          anytime at:</p>
-        <ul>
-          <li>Phone: [Hotel Phone Number]</li>
-          <li>Email: [Hotel Email Address]</li>
-          <li>Address: [Hotel Address]</li>
-        </ul>
+      <div class="Amenities-details card-grid">
+        <div class="card" onclick="openModal('checkInOut')"><h2>Check-In & Check-Out</h2><p>Check-In: 3:00 PM • Check-Out: 11:00 AM</p></div>
+        <div class="card" onclick="openModal('breakfast')"><h2>Complimentary Breakfast</h2><p>Enjoy local pastries, fruit, and beverages from 7:00 AM to 10:00 AM.</p></div>
+        <div class="card" onclick="openModal('wifi')"><h2>Wi-Fi</h2><p>Free high-speed Wi-Fi throughout the property.</p></div>
+        <div class="card" onclick="openModal('parking')"><h2>On-Site Parking</h2><p>Complimentary parking available for all guests.</p></div>
+        <div class="card" onclick="openModal('guestLounge')"><h2>Guest Lounge</h2><p>Relax with books, games, or a hot beverage.</p></div>
+        <div class="card" onclick="openModal('bicycles')"><h2>Bicycles</h2><p>Free bike rentals to explore nearby trails and towns.</p></div>
+        <div class="card" onclick="openModal('contact')">
+          <h2>Contact Information</h2>
+          <ul>
+            <li>Phone: [Hotel Phone Number]</li>
+            <li>Email: [Hotel Email Address]</li>
+            <li>Address: [Hotel Address]</li>
+          </ul>
+        </div>
       </div>
+      <div class="back-to-top"><a href="#">Back to Top</a></div>
     </section>
-  </main>
 
-  <script>
-    window.addEventListener("scroll", function () {
-      const floatingText = document.querySelector('.floating-text');
-      const rect = floatingText.getBoundingClientRect();
-
-      if (rect.top < window.innerHeight && rect.bottom >= 0) {
-        floatingText.classList.add('visible');
-      } else {
-        floatingText.classList.remove('visible');
-      }
-    });
-  </script>
-  <header class="title">
-    <nav class="navbar">
-      <a href="index.html">Home</a>
-      <a href="About.html">About</a>
-      <a href="Book.html">Book Your Visit</a>
-      <a href="Amenities.html">Amenities</a>
-      <a href="todo.html">Things To Do</a>
-    </nav>
-  </header>
-
-  <main class="container">
-    <section class="ToDo-first">
-      <h1 class="floating-text">Things To Do In the San Juan Islands</h1>
+    <!-- THINGS TO DO SECTION -->
+    <section class="ToDo-first" id="things-to-do">
+      <h1 class="floating-text">Things To Do in the San Juan Islands</h1>
+      <p class="section-intro">Ready to explore? The San Juan Islands are packed with natural beauty, wildlife, and quirky hidden gems.</p>
     </section>
 
     <section class="content">
       <div class="ToDo-details">
-
-        <h2>⛵ Watch Orcas at Lime Kiln Point State Park</h2>
-        <p>Often called the “whale watch park,” Lime Kiln Point on San Juan Island offers the rare opportunity to see
-          orcas from shore. Bring your binoculars and enjoy the scenic trails around the lighthouse.</p>
-        <a class="external-link" href="https://parks.wa.gov/find-parks/state-parks/lime-kiln-point-state-park"
-          target="_blank">Visit Lime Kiln Point</a>
-
-        <h2>⛵ Wander the San Juan Islands Sculpture Park</h2>
-        <p>Just outside Roche Harbor, this 20-acre park blends art and nature with over 150 unique sculptures along
-          forested and open-air trails. Great for a peaceful walk and creative inspiration.</p>
-        <a class="external-link" href="https://sjisculpturepark.com/" target="_blank">Explore the Sculpture Park</a>
-
-        <h2>⛵ Visit Pelindaba Lavender Farm</h2>
-        <p>Surround yourself with the soothing scent of lavender at this picturesque working farm. Stroll the rows, snap
-          some photos, and check out their on-site shop full of handmade goods.</p>
-        <a class="external-link"
-          href="https://www.tripadvisor.com/Attraction_Review-g60957-d4375398-Reviews-Pelindaba_Lavender_Farm-Friday_Harbor_San_Juan_Island_San_Juan_Islands_Washington.html"
-          target="_blank">TripAdvisor Reviews</a>
-        <br><br>
-        <a href="https://www.instagram.com/pelindabalavender/?hl=en" target="_blank"
-          style="font-size: 20px; color: #3f729b;"> Visit the Pelindaba Lavender Instagram Profile</a></p>
-        <h2>⛵ Discover American & English Camps</h2>
-        <p>Explore both sides of history at these scenic National Historical Park sites tied to the “Pig War” dispute.
-          Peaceful trails, wildlife, and panoramic views make this a memorable stop for history buffs and hikers alike.
-        </p>
-
-        <h2>⛵ Explore The Whale Museum</h2>
-        <p>Located in Friday Harbor, The Whale Museum offers an interactive and educational look into local marine life,
-          especially the region’s beloved orcas. Great for families and ocean lovers.</p>
-        <a class="external-link" href="https://whalemuseum.org/" target="_blank">Learn More at The Whale Museum</a>
-
-        <h2>⛵ Take in the View from Mount Constitution</h2>
-        <p>Head to Orcas Island and climb (or drive) to the summit of Mount Constitution. It’s the highest point in the
-          San Juans and offers unmatched views of Mount Baker, surrounding islands, and even Vancouver on a clear day.
-        </p>
-
-        <h2>⛵ Meet the Alpacas at Krystal Acres</h2>
-        <p>This charming alpaca farm is a fun, feel-good stop for all ages. Say hi to the alpacas and browse cozy
-          handmade goods in their farm store.</p>
-        <a class="external-link" href="https://www.krystalacres.com/" target="_blank">Visit Krystal Acres Alpaca
-          Farm</a>
-
-        <h2>⛵ Hike to Shark Reef Sanctuary</h2>
-        <p>Located on Lopez Island, this quiet forest trail leads to dramatic sea cliffs overlooking rocky outcroppings
-          where sea lions love to sunbathe. A great spot for photography and solitude.</p>
-        <a class="external-link" href="https://www.visitsanjuans.com/account/shark-reef-sanctuary" target="_blank">More
-          on Shark Reef Sanctuary</a>
-
-        <h2>⛵ Catch Sunset at Judd Cove Preserve</h2>
-        <p>Hidden away on Orcas Island, this lesser-known gem offers peaceful waters, tide pools, and a perfect setting
-          for a laid-back sunset picnic.</p>
-
-        <h2>Final Thoughts</h2>
-        <p>Whether you're spotting whales, wandering lavender fields, or soaking in a sunset by the sea, the San Juan
-          Islands are full of unforgettable moments waiting to be discovered.</p>
-        <p><strong>Time to chart your course to the islands.</strong></p>
-
+        <div class="card" onclick="openModal('orcaWatching')"><h2>Watch Orcas at Lime Kiln Point</h2></div>
+        <div class="card" onclick="openModal('sculpturePark')"><h2>Sculpture Park</h2></div>
+        <div class="card" onclick="openModal('lavenderFarm')"><h2>Lavender Farm</h2></div>
+        <div class="card" onclick="openModal('whalemuseum')"><h2>The Whale Museum</h2></div>
+        <div class="card" onclick="openModal('mountconstitution')"><h2>Mount Constitution</h2></div>
+        <div class="card" onclick="openModal('krystalacres')"><h2>Krystal Acres Alpacas</h2></div>
+        <div class="card" onclick="openModal('sharkreef')"><h2>Shark Reef Sanctuary</h2></div>
+        <div class="card" onclick="openModal('juddcove')"><h2>Judd Cove Preserve</h2></div>
       </div>
+      <div class="back-to-top"><a href="#">Back to Top</a></div>
     </section>
+
   </main>
 
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="modal-header"><h2 id="modal-title"></h2></div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
   <script>
-    window.addEventListener("scroll", function () {
-      const floatingText = document.querySelector('.floating-text');
-      const rect = floatingText.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom >= 0) {
-        floatingText.classList.add('visible');
-      } else {
-        floatingText.classList.remove('visible');
+    function openModal(section) {
+      let title = '';
+      let bodyContent = '';
+
+      switch (section) {
+        case 'checkInOut':
+          title = 'Check-In & Check-Out';
+          bodyContent = '<p>Check-In: 3:00 PM • Check-Out: 11:00 AM</p>';
+          break;
+        case 'breakfast':
+          title = 'Complimentary Breakfast';
+          bodyContent = '<p>Enjoy local pastries, fruit, and beverages from 7:00 AM to 10:00 AM.</p>';
+          break;
+        case 'wifi':
+          title = 'Wi-Fi';
+          bodyContent = '<p>Free high-speed Wi-Fi throughout the property.</p>';
+          break;
+        case 'parking':
+          title = 'On-Site Parking';
+          bodyContent = '<p>Complimentary parking available for all guests.</p>';
+          break;
+        case 'guestLounge':
+          title = 'Guest Lounge';
+          bodyContent = '<p>Relax with books, games, or a hot beverage.</p>';
+          break;
+        case 'bicycles':
+          title = 'Bicycles';
+          bodyContent = '<p>Free bike rentals to explore nearby trails and towns.</p>';
+          break;
+        case 'contact':
+          title = 'Contact Information';
+          bodyContent = `
+            <ul>
+              <li>Phone: [Hotel Phone Number]</li>
+              <li>Email: [Hotel Email Address]</li>
+              <li>Address: [Hotel Address]</li>
+            </ul>`;
+          break;
+        case 'orcaWatching':
+          title = 'Watch Orcas at Lime Kiln Point';
+          bodyContent = '<p>Lime Kiln is the best shore-based whale-watching spot in the country.</p>';
+          break;
+        case 'sculpturePark':
+          title = 'Sculpture Park';
+          bodyContent = '<p>Explore art and nature together in this 20-acre open-air gallery.</p>';
+          break;
+        case 'lavenderFarm':
+          title = 'Lavender Farm';
+          bodyContent = '<p>Enjoy stunning fields of lavender and handcrafted goods.</p>';
+          break;
+        case 'whalemuseum':
+          title = 'The Whale Museum';
+          bodyContent = '<p>Learn about marine life and local orca populations in this educational museum.</p>';
+          break;
+        case 'mountconstitution':
+          title = 'Mount Constitution';
+          bodyContent = '<p>The highest point in the San Juans — epic views await!</p>';
+          break;
+        case 'krystalacres':
+          title = 'Krystal Acres Alpacas';
+          bodyContent = '<p>Meet friendly alpacas and shop for alpaca goods.</p>';
+          break;
+        case 'sharkreef':
+          title = 'Shark Reef Sanctuary';
+          bodyContent = '<p>Peaceful trail ending at rocky cliffs with seals and sea lions.</p>';
+          break;
+        case 'juddcove':
+          title = 'Judd Cove Preserve';
+          bodyContent = '<p>A serene spot for sunsets and nature watching.</p>';
+          break;
       }
+
+      document.getElementById('modal-title').innerHTML = title;
+      document.getElementById('modal-body').innerHTML = bodyContent;
+      document.getElementById('myModal').style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById('myModal').style.display = "none";
+    }
+
+    window.addEventListener("scroll", function () {
+      const floatingText = document.querySelectorAll('.floating-text');
+      floatingText.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+          el.classList.add('visible');
+        } else {
+          el.classList.remove('visible');
+        }
+      });
     });
   </script>
-</body>
+<<<<<<< Updated upstream
+=======
 
+>>>>>>> Stashed changes
+</body>
 </html>
