@@ -75,12 +75,12 @@ router.post('/newRes', withAuth, async (req, res) => {
 
 // get one reservation
 // will look like http://localhost:3001/api/reservations/getOneRes/52
-router.get('/getOneRes/:resId', withAuth, async (req, res) => {
+router.get('/getOneRes/:confId', withAuth, async (req, res) => {
 
   try {
 
     const resData = await Reservation.findOne({
-      where: { id: req.params.resId },
+      where: { confirmation_number: req.params.confId },
       include: [
         {
           model: User,
@@ -97,7 +97,7 @@ router.get('/getOneRes/:resId', withAuth, async (req, res) => {
     if (!resData) {
       res
         .status(400)
-        .json({ message: `reservation with id: ${req.params.resId} is not found` });
+        .json({ message: `reservation with confirmation number: ${req.params.confId} is not found` });
       return;
     }
 

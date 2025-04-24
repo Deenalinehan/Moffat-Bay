@@ -1,3 +1,12 @@
+// Group 1 Capstone Database
+// Roald Medendorp
+// Austen Erickson 
+// Deena Linehan 
+// Giabella Apo 
+// Kristina Vasquez 
+// Thunder Harding 
+// Violet Gonzalez 
+
 // the home routes serve the webpages to the broswer
 
 const router = require("express").Router();
@@ -49,9 +58,9 @@ router.get('/reservationlookup', withAuth,(req, res) => {
 
 // // Contact Page
 // will look like http://localhost:3001/contact
-// router.get('/contact', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../views/contact.html'));
-// });
+router.get('/contact', (req, res) => {
+     res.sendFile(path.join(__dirname, '../views/contact.html'));
+ });
 
 // Things to Do Page
 router.get('/todo', (req, res) => {
