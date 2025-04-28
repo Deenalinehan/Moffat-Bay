@@ -89,6 +89,63 @@ async function seedDatabase() {
         confirmation_number: "12345678"
       },
     ]);
+  
+    // Create attractions
+    await Attraction.bulkCreate([
+      {
+        name: 'Whale Watching Tour',
+        description: '3-hour guided whale watching expedition',
+        price: 89.99,
+        duration: 3,
+        image: 'whale.jpg',
+        capacity: 20
+      },
+      {
+        name: 'Kayak Adventure',
+        description: 'Guided coastal kayaking tour',
+        price: 49.99,
+        duration: 2.5,
+        image: 'kayak.jpg',
+        capacity: 15
+      },
+      {
+        name: 'Hiking Expedition',
+        description: 'Full-day guided mountain hike',
+        price: 69.99,
+        duration: 6,
+        image: 'hiking.jpg',
+        capacity: 10
+      }
+    ]);
+
+    // Create bookings
+    await Booking.bulkCreate([
+      {
+        user_id: users[0].id,
+        attraction_id: attractions[0].id,
+        date: '2025-10-16',
+        participants: 2,
+        total_price: attractions[0].price * 2,
+        status: 'confirmed'
+      },
+      {
+        user_id: users[1].id,
+        attraction_id: attractions[1].id,
+        date: '2025-11-02',
+        participants: 4,
+        total_price: attractions[1].price * 4,
+        status: 'confirmed'
+      },
+      {
+        user_id: users[2].id,
+        attraction_id: attractions[2].id,
+        date: '2025-12-11',
+        participants: 3,
+        total_price: attractions[2].price * 3,
+        status: 'pending'
+      }
+    ]);
+
 
     console.log('Database seeded!');
   } catch (error) {
