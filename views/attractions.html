@@ -1,0 +1,153 @@
+<!-- // Group 1 Capstone Database
+// Roald Medendorp
+// Austen Erickson 
+// Deena Linehan 
+// Giabella Apo 
+// Kristina Vasquez 
+// Thunder Harding 
+// Violet Gonzalez  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attractions - Moffat Bay Lodge</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=BhuTuka+Expanded+One&family=Gowun+Batang:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- Adds easepick resources! Easepick is a date-range picker-->
+    <script src="https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.umd.min.js"></script>
+    <!-- Allows for a proper can-->
+    <!-- Add this CSS to your style.css -->
+
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="attractions">Attractions</a>
+        <a href="rooms">Rooms</a>
+        <a href="about">About Us</a>
+        <a href="login">Login</a>
+    </div>
+
+    <!-- Attractions Header -->
+    <div class="title">
+        <div class="floating-text">
+            <h1>Moffat Bay Experiences</h1>
+            <h2>Discover Coastal Adventures</h2>
+        </div>
+    </div>
+
+    <!-- Attractions Grid -->
+    <div class="content">
+        <div class="attractions-grid" id="attractionsContainer">
+            <!-- Dynamic content loaded from API -->
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Book Activity: <span id="activityTitle"></span></h3>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="bookingDate">Select Date</label>
+                    <input type="date" id="bookingDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="participants">Participants (1-6)</label>
+                    <input type="number" id="participants" min="1" max="6" required>
+                </div>
+                <button type="submit" class="bhutuka-expanded-one-regular">Reserve Now</button>
+            </form>
+            <div id="bookingMessage"></div>
+        </div>
+    </div>
+
+    <script>
+        // Load attractions
+        async function loadAttractions() {
+            try {
+                const response = await fetch('/api/attractions');
+                const attractions = await response.json();
+                
+                const container = document.getElementById('attractionsContainer');
+                container.innerHTML = attractions.map(att => `
+                    <div class="attraction-card">
+                        <img src="images/attractions/${att.image}" alt="${att.name}">
+                        <h3>${att.name}</h3>
+                        <p>${att.description}</p>
+                        <p>Duration: ${att.duration} hours</p>
+                        <p>Price: $${att.price}/person</p>
+                        <button class="book-btn" data-id="${att.id}">Book Now</button>
+                    </div>
+                `).join('');
+                
+                // Add event listeners to buttons
+                document.querySelectorAll('.book-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const activity = attractions.find(a => a.id == e.target.dataset.id);
+                        showBookingModal(activity);
+                    });
+                });
+            } catch (error) {
+                console.error('Error loading attractions:', error);
+            }
+        }
+
+        // Modal handling
+        const modal = document.getElementById('bookingModal');
+        const span = document.getElementsByClassName("close")[0];
+
+        function showBookingModal(activity) {
+            document.getElementById('activityTitle').textContent = activity.name;
+            modal.style.display = "block";
+        }
+
+        span.onclick = () => modal.style.display = "none";
+        window.onclick = (event) => {
+            if (event.target == modal) modal.style.display = "none";
+        }
+
+        // Handle booking
+        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const bookingData = {
+                activityId: document.querySelector('.book-btn').dataset.id,
+                date: document.getElementById('bookingDate').value,
+                participants: document.getElementById('participants').value
+            };
+
+            try {
+                const response = await fetch('/api/bookings', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    },
+                    body: JSON.stringify(bookingData)
+                });
+
+                const result = await response.json();
+                if (!response.ok) throw new Error(result.message);
+                
+                document.getElementById('bookingMessage').textContent = 
+                    "Booking successful! Confirmation sent to your email.";
+                setTimeout(() => modal.style.display = "none", 2000);
+            } catch (error) {
+                document.getElementById('bookingMessage').textContent = error.message;
+            }
+        });
+
+        // Initial load
+        loadAttractions();
+    </script>
+</body>
+</html>

@@ -62,6 +62,12 @@ router.get('/contact', (req, res) => {
      res.sendFile(path.join(__dirname, '../views/contact.html'));
  });
 
+ // Attractions
+ // will look like http://localhost:3001/attractions
+router.get('/attractions', (req, res) => {
+    res.sendFile(path.join(__dirname, '../views/attractions.html'));
+ });
+
 // Things to Do Page
 router.get('/todo', (req, res) => {
     res.sendFile(path.join(__dirname, '../views/todo.html'));
