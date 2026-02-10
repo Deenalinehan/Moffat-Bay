@@ -1,34 +1,32 @@
-const path = require('path');
-require('dotenv').config();
-const express = require("express");
-const session = require("express-session");
+const express = require('express');
+const session = require('express-session');
 const sequelize = require('./config/connection');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const routes = require('./controllers');
 
 const app = express();
 
-const sess = {
-    secret: process.env.SECRET,
-    cookie: { maxAge: 900000 },
-    resave: false,
-    saveUninitialized: false,
-    store: new SequelizeStore({ db: sequelize })
-};
-
-app.use(session(sess));
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(routes);
 
-app.use((req, res) => {
-    res.status(404).json({ error: 'Route not found. Does your route require an api path variable?' });
+// Session setup
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'railway-dev-secret',
+  resave: false,
+  saveUninitialized: false,
+}));
+
+// Example route
+app.get('/', (req, res) => {
+  res.send('Hello from Moffat Bay!');
 });
 
-// Only listen once, after Sequelize sync
+// Port handling
 const PORT = process.env.PORT || 3001;
 
-sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  if (process.env.PORT) {
+    console.log(`✅ App running on Railway port ${PORT}`);
+  } else {
+    console.log(`✅ App running locally on port ${PORT}`);
+  }
 });
