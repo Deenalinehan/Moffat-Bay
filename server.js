@@ -16,21 +16,19 @@ app.use(session({
   saveUninitialized: false,
 }));
 
-// Serve all static files from your frontend folder
-// Replace 'public' with the folder where your HTML/CSS/JS live
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve static files (HTML, CSS, JS, images)
+app.use(express.static(path.join(__dirname, 'public'))); // replace 'public' if your folder is named differently
 
-// Example API routes
-// Keep your backend logic separate here
+// Example API route
 app.get('/api/hello', (req, res) => {
   res.json({ message: 'Hello from Moffat Bay API!' });
 });
 
-// Optional: If you use template engine (EJS/Pug/Handlebars)
-// app.set('view engine', 'ejs');
-// app.set('views', path.join(__dirname, 'views'));
+// Additional backend routes can go here
+// Make sure all route parameters are valid!
+// Example: /api/user/:id is valid, /api/user/: is INVALID
 
-// Fallback route: serve index.html for SPA routing (if using a frontend framework)
+// SPA fallback route (must be last)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
