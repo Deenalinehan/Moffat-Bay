@@ -1,28 +1,25 @@
-// Load environment variables
+// pull in environment variables
 require('dotenv').config();
 
 const { Sequelize } = require('sequelize');
 
-// Use Railway MySQL vars if available, otherwise fallback to local .env
 const sequelize = new Sequelize(
-  process.env.MYSQL_DATABASE || process.env.DB_NAME,
-  process.env.MYSQL_USER || process.env.DB_USER,
-  process.env.MYSQL_PASSWORD || process.env.DB_PW,
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PW,
   {
-    host: process.env.MYSQL_HOST || process.env.DB_HOST || 'localhost',
-    port: process.env.MYSQL_PORT || process.env.DB_PORT || 3306,
-    dialect: 'mysql',          // hardcoded for clarity
-    logging: false,
-    retry: {
-      max: 5,
-      match: [
-        /ECONNREFUSED/,
-        /ETIMEDOUT/,
-        /SequelizeConnectionRefusedError/
-      ]
-    }
+    host: process.env.DB_HOST || 'localhost',
+    dialect: process.env.DB_DIALECT || 'mysql',
+    port: process.env.DB_PORT || 3306,
+    logging: false, // optional: turn off SQL query logging
   }
 );
+
+sequelize.authenticate()
+  .then(() => console.log('Database connected.'))
+  .catch(err => console.error('Connection failed:', err));
+
+module.exports = sequelize;
 
 // Test DB connection, but do NOT crash app if unavailable
 (async () => {
