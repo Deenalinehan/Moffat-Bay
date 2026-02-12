@@ -1,6 +1,4 @@
-// pull in environment variables
 require('dotenv').config();
-
 const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize(
@@ -9,19 +7,13 @@ const sequelize = new Sequelize(
   process.env.DB_PW,
   {
     host: process.env.DB_HOST || 'localhost',
-    dialect: process.env.DB_DIALECT || 'mysql',
     port: process.env.DB_PORT || 3306,
-    logging: false, // optional: turn off SQL query logging
+    dialect: 'mysql',
+    logging: false,
   }
 );
 
-sequelize.authenticate()
-  .then(() => console.log('Database connected.'))
-  .catch(err => console.error('Connection failed:', err));
-
-module.exports = sequelize;
-
-// Test DB connection, but do NOT crash app if unavailable
+// Test DB connection but do NOT crash app
 (async () => {
   try {
     await sequelize.authenticate();
