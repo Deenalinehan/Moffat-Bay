@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sequelize = require('./config/connection');
 const path = require('path');
 
@@ -9,24 +10,32 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Session setup
-app.use(session({
-  secret: process.env.SESSION_SECRET || 'railway-dev-secret',
-  resave: false,
-  saveUninitialized: false,
-}));
+// Session setup using SequelizeStore (production-safe)
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || 'railway-dev-secret',
+    store: new SequelizeStore({
+      db: sequelize,           // store sessions in your database
+      checkExpirationInterval: 15 * 60 * 1000, // optional: check expired sessions every 15 min
+      expiration: 24 * 60 * 60 * 1000,        // optional: session expires after 1 day
+    }),
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
-// Serve static files (HTML, CSS, JS, images)
-app.use(express.static(path.join(__dirname, 'public'))); // replace 'public' if your folder is named differently
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, 'public'))); // replace 'public' if your folder is different
 
-// Example API route
+// Example API route (ensure all route parameters are valid!)
 app.get('/api/hello', (req, res) => {
   res.json({ message: 'Hello from Moffat Bay API!' });
 });
 
-// Additional backend routes can go here
-// Make sure all route parameters are valid!
-// Example: /api/user/:id is valid, /api/user/: is INVALID
+// Example route with parameter
+// app.get('/api/user/:id', (req, res) => {
+//   res.json({ userId: req.params.id });
+// });
 
 // SPA fallback route (must be last)
 app.get('*', (req, res) => {
@@ -34,7 +43,8 @@ app.get('*', (req, res) => {
 });
 
 // Connect to database first, then start server
-sequelize.authenticate()
+sequelize
+  .authenticate()
   .then(() => {
     console.log('✅ Database connected');
 
@@ -47,6 +57,6 @@ sequelize.authenticate()
       }
     });
   })
-  .catch(err => {
+  .catch((err) => {
     console.error('⚠️ Database connection failed:', err.message);
   });
